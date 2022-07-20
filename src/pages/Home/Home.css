@@ -1,0 +1,12 @@
+.home-page {
+  background-color: rgb(166, 220, 197);
+  height: 100%;
+  width: 100%;
+  padding: 30px;
+}
+
+.home-title {
+  font-family: fantasy;
+  text-align: center;
+  padding-bottom: 30px;
+}

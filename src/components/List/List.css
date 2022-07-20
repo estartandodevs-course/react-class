@@ -1,0 +1,9 @@
+.list {
+  list-style-type: decimal;
+  margin-bottom: 100px;
+}
+
+.list li {
+  font-family: cursive;
+  font-size: 18px;
+}
