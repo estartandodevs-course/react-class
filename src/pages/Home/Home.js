@@ -1,27 +1,31 @@
-import React, { useState } from "react";
-import Counter from "../../components/Counter/Counter";
-import InputAdd from "../../components/InputAdd/InputAdd";
-import List from "../../components/List/List";
+import React, { useEffect, useState } from "react";
+import ListJobs from "../../components/ListJobs/ListJobs";
+import Pagination from "../../components/Pagination/Pagination";
+import { API_URL } from "../../service/constants";
 import "./Home.css";
 
 const Home = () => {
-  const [names, setNames] = useState(["Atila", "Mauricio", "Elisa", "Pablo"]);
+  const [page, setPage] = useState(1);
+  const [jobs, setJobs] = useState([]);
 
-  const addName = (newName) => {
-    setNames([...names, newName]);
+  useEffect(() => {
+    fetch(API_URL)
+    .then(res => res.json())
+    .then(data => setJobs(data));
+  }, []);
+
+  const deleteJob = (id) => {
+    fetch(`${API_URL}/id/${id}`, {method: 'DELETE'})
+      .then(res => res.json())
+      .then(data => setJobs(data));
   }
 
   return (
-    <div className='home-page'>
-      <h1 className="home-title">Primeiro React App do Estartando Devs 2022</h1>
-      <InputAdd 
-        placeholder="Insira o novo nome"
-        onAdd={addName}
-        buttonText="Inserir"
-      />
-      <List items={names} />
-      <Counter />
-    </div>
+    <main className='home-page'>
+      <h1 className='home-title'>Vagas de Emprego diretamente do Devs</h1>
+      <ListJobs list={jobs} />
+      <Pagination page={page} setPage={setPage} maximumPages={2} />
+    </main>
   )
 }
 
