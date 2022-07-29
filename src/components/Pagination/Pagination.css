@@ -9,3 +9,13 @@
   padding: 0 10px;
   cursor: pointer;
 }
+
+.number-page {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.active {
+  font-size: 16px;
+  font-weight: bold;
+}

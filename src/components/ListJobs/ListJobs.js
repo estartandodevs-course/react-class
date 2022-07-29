@@ -17,7 +17,7 @@ const ListJobs = (props) => {
   return (
     <div>
       {list.map(job => (
-        <JobItem job={job} />
+        <JobItem key={job.title} job={job} />
       ))}
     </div>
   )
